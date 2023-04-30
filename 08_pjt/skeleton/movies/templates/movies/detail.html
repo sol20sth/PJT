@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{{movie.title}}</h1>
+<span class="h5">장르: </span>
+    {% for genre in genres %}
+        <span class="h5">{{genre.name}}</span>
+    {% endfor %}
+<hr>
+<img src="{{movie.poster_path}}" style="width: 400px">
+<p class="h5">평점: {{movie.vote_average}}</p>
+<p class="h5">개봉일: {{movie.release_date}}</p>
+<!-- <p class="h5">줄거리: {{movie.overview}}</p> -->
+<div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          줄거리
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+        <div class="accordion-body">
+            {{movie.overview}}
+        </div>
+      </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block script %}
+
+{% endblock  %}

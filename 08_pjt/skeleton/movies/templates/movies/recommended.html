@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      영화 선택
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">추천수</a></li>
+      <li><a class="dropdown-item" href="#">평점순n</a></li>
+      <li><a class="dropdown-item" href="#">개봉일 순</a></li>
+    </ul>
+</div>
+<h2>추천 남들이 찾지 않는 영화들</h2>
+    <div class="row row-cols-1 row-cols-md-4 ">
+    {% for movie in movies %}
+    <div class="card" >
+        <img src="{{movie.poster_path}}" class="card-img-top">
+        <div class="card-body">
+          <a href="{% url 'movies:detail' movie.pk %}">{{ movie.title }}</a>
+          <p>추천 수 : {{movie.vote_count}}</p>
+        </div>
+      </div>
+    {% endfor %}
+{% endblock %}
+
+
+
+{% block script %}
+
+{% endblock script %}
+

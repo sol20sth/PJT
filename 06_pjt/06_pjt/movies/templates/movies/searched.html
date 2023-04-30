@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+<h2>검색하신 결과입니다.</h2>
+    {% for movie in movies %}
+        <p><a href="{% url 'movies:detail' movie.pk%}">제목 : {{movie.title}}</a></p>
+        <p>내용 : {{movie.description}}</p>
+        <hr>
+    {% endfor %}
+
+{% endblock %}

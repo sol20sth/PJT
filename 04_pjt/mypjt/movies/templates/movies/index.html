@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<div class='container'>
+    <hr>
+  <h1 font-weigth-bolder>전체 영화 목록</h1>
+  <a href="{% url 'movies:create' %}">CREATE</a>
+  <hr />
+  <div class='container d-flex justify-content-center col-3'>
+    {% for movie in movies %}
+    <div class="card col-6" style="width: 24rem;">
+        {% if movie.actor_image %}
+          <img src="{{movie.actor_image.url}}" width=100%>
+        {% endif %}
+      <div class="card-body">
+        <a class='fs-2' href="{% url 'movies:detail' movie.pk %}">{{movie.title}}</a><br>
+        <h4> 평점 : {{movie.score}}</h4><br>
+        <h4 class="card-text">{{movie.description}}</h4>
+      </div>
+    </div>
+    {% endfor %} 
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>INDEX</h1>
+  <a href="{% url 'movies:create' %}">[CREATE]</a>
+  <hr>
+  {% for movie in movies %}
+  
+    <a href="{% url 'movies:detail' movie.pk %}"><p>{{ movie.title }}</p></a>
+    <p>내용 : {{movie.description}}</p>
+    <form action="{% url 'movies:likes' movie.pk %}" method="POST">
+      {% csrf_token %}
+      <p>좋아요 수 : {{movie.movie_like_users.count}}</p>
+      {% if request.user in movie.movie_like_users.all %}
+        <input type="submit" value="좋아요 취소">
+      {% else %}
+        <input type="submit" value="좋아요">
+      {% endif %}
+    </form>
+    
+    <hr>
+    {% endfor %}
+    <form class="d-flex" method="POST" action="{% url 'movies:search' %}">
+      {% csrf_token %}        
+      <input class="form-control me-2" type="search" placeholder="Search" name="searched" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit"> Search </button>
+    </form>
+    <hr>
+    <a href="{% url 'movies:index' %}">목록으로</a>
+    <hr>
+{% endblock %}

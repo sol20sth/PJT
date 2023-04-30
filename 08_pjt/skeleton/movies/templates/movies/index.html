@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>영화 목록</h1>
+  <div class="row row-cols-1 row-cols-md-4 ">
+  {% for movie in movies %}
+  <div class="card" >
+    <img src="{{movie.poster_path}}" class="card-img-top">
+    <div class="card-body">
+      <a href="{% url 'movies:detail' movie.pk %}">{{ movie.title }}</a>
+      <p>평점 : {{movie.vote_average}}</p>
+    </div>
+  </div>
+
+  {% endfor %}
+  </div>
+{% endblock %}
