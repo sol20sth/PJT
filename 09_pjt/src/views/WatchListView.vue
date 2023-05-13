@@ -3,7 +3,7 @@
     <WatchListForm/>
     <div>
         <div v-for="(content, index) in watchList" :key="index">
-            <WatchListItem :content="content"/>
+            <WatchListItem :content="content" :index="index"/>
         </div>
     </div>
   </div>

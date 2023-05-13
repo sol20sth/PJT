@@ -15,9 +15,6 @@
       </div>
     </nav>
     <nav>
-      
-      
-      
     </nav>
     <router-view/>
   </div>
@@ -40,11 +37,11 @@ export default {
         .catch((err) => {
             console.log(err)
         })
-        }
-    },
-    created() {
-      this.getMovieList()
     }
+  },
+  created() {
+    this.getMovieList()
+  }
 }
 </script>
 <style>
