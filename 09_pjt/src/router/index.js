@@ -16,6 +16,7 @@ const routes = [
     name: 'RandomView',
     component: () => import(/* webpackChunkName: "about" */ '../views/RandomView.vue')
   },
+  
   {
     path: '/watch-list',
     name: 'WatchListView',
